@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head') %>
+  </head>
+  <body>
+    <main>
+      <div class="container py-3 bg-light rounded-3">
+        <%- include('../partials/header') %>
+        <h2 class="text-capitalize">
+          Welcome To Your Dashboard <%= locals.username %>
+        </h2>
+        <form action="/users/logout" method="post">
+          <button class="btn btn-large btn-danger">Logout</button>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>

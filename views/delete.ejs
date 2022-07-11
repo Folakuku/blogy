@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head') %>
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <div
+          class="modal modal-alert position-static d-block bg-secondary py-5"
+          tabindex="-1"
+          role="dialog"
+          id="modalChoice"
+        >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content rounded-4 shadow">
+              <div class="modal-body p-4 text-center">
+                <h5 class="mb-0">Are sure you want to delete this post?</h5>
+                <p class="mb-0">The post cannot be retrieved once deleted</p>
+              </div>
+              <div class="modal-footer flex-nowrap p-0">
+                <form
+                  action="/blogs/delete/<%= blog._id %>?_method=DELETE "
+                  method="post"
+                >
+                  <button class="btn btn-danger btn-lg" type="submit">
+                    Delete
+                  </button>
+                </form>
+                <a
+                  href="/blogs/read/<%= blog._id %> "
+                  type="button"
+                  class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0"
+                  data-bs-dismiss="modal"
+                >
+                  No thanks
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

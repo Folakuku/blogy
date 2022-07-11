@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head') %>
+  </head>
+  <body>
+    <main>
+      <div class="container py-3 bg-light rounded-3">
+        <%- include('../partials/header') %>
+        <div class="container-fluid">
+          <h2 class="display-5 fw-bold"><%= blog.title %></h2>
+          <!-- locals.<some variable> makes sure the app doesn't crash when the variable isn't defined-->
+          <p class="container"><%= blog.content %></p>
+          <div class="d-flex justify-content-between">
+            <a
+              class="btn btn-primary btn-lg"
+              type="button"
+              href="/blogs/edit/<%= blog._id %> "
+              >Edit</a
+            >
+            <a
+              href="/blogs/delete/<%= blog._id %> "
+              type="button"
+              class="btn btn-lg btn-danger"
+              >Delete
+            </a>
+            <!-- <button
+              class="btn btn-lg btn-danger"
+              onclick="del('<%= blog._id %>')"
+            >
+              Delete now
+            </button> -->
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      del = async (id) => {
+        const request = await fetch(`/blogs/del/${id}`, {
+          method: "DELETE",
+        });
+        const response = await request.json();
+        if (response.status === true) {
+          window.location.href = response.redirect;
+        } else {
+          alert("Could not delete that post");
+        }
+      };
+    </script>
+  </body>
+</html>
